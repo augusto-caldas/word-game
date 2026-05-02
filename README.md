@@ -1,4 +1,9 @@
 # word-game
 
-C Programming college project<br />
 A guess the word game
+
+## Installation
+
+```bash
+gcc main.c utils.c -o word-game
+```

@@ -1,8 +1,3 @@
-/*
- * Author: Luis Augusto Espindola Caldas
-*/
-
-// Imports
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -20,8 +15,7 @@ int HISTOGRAM_ARRAY[MAX_NUM_GUESS + 1][LIMIT_GAMES];
 // Getting input from user using easy mode conditions
 char *easy_get_user_input() {
     // Creating string that will be returned
-    char *finalString;
-    finalString = (char *) malloc(WORD_SIZE * sizeof(char) + 1);
+    char *finalString = malloc(WORD_SIZE * sizeof(char) + 1);
 
     // Getting using input
     while (1) {
@@ -64,8 +58,7 @@ char *easy_get_user_input() {
 // Getting input from user using hard mode conditions
 char *hard_get_user_input(const char rightLetters[WORD_SIZE + 1]) {
     // Creating string that will be returned
-    char *finalString;
-    finalString = (char *) malloc(WORD_SIZE * sizeof(char) + 1);
+    char *finalString = malloc(WORD_SIZE * sizeof(char) + 1);
 
     // Getting using input
     while (1) {
@@ -115,9 +108,8 @@ char *hard_get_user_input(const char rightLetters[WORD_SIZE + 1]) {
 void guess_game() {
     // Setting game mode
     int isHard;
-    int input;
     printf("1. Hard Mode\n0. Easy mode\n>> ");
-    input = getchar();
+    const int input = getchar();
     getchar();
     if (input == '1')
         isHard = 1;
@@ -129,20 +121,18 @@ void guess_game() {
     load_word_list(wordArray);
 
     // Selecting random word from 2d array
-    srand(clock());
-    int selectLine = rand() % DICT_SIZE;
+	srandom(clock());
+    const long selectLine = random() % DICT_SIZE;
     char randomWord[WORD_SIZE + 1];
     for (int i = 0; i < WORD_SIZE + 1; ++i) {
         randomWord[i] = wordArray[selectLine][i];
     }
 
-    // Create strings
+    // Create variables
     char correctLetterArray[WORD_SIZE + 1];
     char printWord[WORD_SIZE + 1] = {'-', '-', '-', '-', '-'};
-    char *userGuess;
-
-    // Create variables
-    int tries;
+    char *userGuess = 0;
+    int tries = 0;
     int correctLetterCounter = 0;
 
     // Loop to compare user input to random word
@@ -238,10 +228,9 @@ void printStats() {
 
 int main() {
     // Interactive menu
-    int input;
     while (1) {
         printf("1. Play Game\n2. Games Stats\n0. Quit\n>> ");
-        input = getchar();
+        const int input = getchar();
         getchar();
         switch (input) {
             case '0':
