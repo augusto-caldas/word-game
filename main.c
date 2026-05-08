@@ -48,8 +48,9 @@ char *easy_get_user_input() {
             if (validLetterCounter == WORD_SIZE) {
                 strcpy(finalString, inputString);
                 return finalString;
-            } else
-                printf("Invalid Input\n");
+            }
+
+            printf("Invalid Input\n");
         } else
             printf("Invalid input\n");
     }
